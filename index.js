@@ -19,8 +19,9 @@ const calMonthBack = document.getElementById("month-back")
 
 // CHANGEABLES
 const iam = [ ' Timon Ole Ensel               ',
-            ' a Student             ',
-            ' a Developer             '
+            ' a TUM Student             ',
+            ' a Software Engineer             ',
+            ' a Problem Solver             '
 ]
 
 /* TOUCHABLES
