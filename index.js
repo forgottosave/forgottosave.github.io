@@ -82,10 +82,10 @@ window.addEventListener('scroll', function() {
     var currScrollPos2 = window.pageYOffset
     let i = disappearingElements.length
     while(i--) {
-        disappearingElements[i].style.opacity = 1-(disappearingElements[i].getBoundingClientRect().y - 510) / 500;
+        disappearingElements[i].style.opacity = 1-(disappearingElements[i].getBoundingClientRect().y - window.innerHeight * 0.5) / 400;
     }
     // navbar
-    if (window.pageYOffset < headEl.getBoundingClientRect().height * 2) {
+    if (window.pageYOffset < headEl.getBoundingClientRect().height * 1.3) {
         navbar.style.visibility = 'hidden';
     } else {
         navbar.style.visibility = 'visible';
