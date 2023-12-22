@@ -21,8 +21,10 @@ html {
 #topbar {
     background-color: #415A77;
     position: fixed;
-    top: 0;
-    width: 100%;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    border-radius: 12px;
     visibility: hidden;
 }
 #topbar a {

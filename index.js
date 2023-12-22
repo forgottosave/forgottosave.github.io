@@ -85,11 +85,12 @@ window.addEventListener('scroll', function() {
         disappearingElements[i].style.opacity = 1-(disappearingElements[i].getBoundingClientRect().y - window.innerHeight * 0.5) / 400;
     }
     // navbar
-    if (window.pageYOffset < headEl.getBoundingClientRect().height * 1.3) {
-        navbar.style.visibility = 'hidden';
-    } else {
-        navbar.style.visibility = 'visible';
+    navbar.style.visibility = 'visible';
+    let toploc = -50+0.5*window.pageYOffset;
+    if (toploc > 4) {
+      toploc = 4;
     }
+    navbar.style.top = toploc+"px";
   }
 )
 
