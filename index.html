@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timon Ole Ensel</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <!-- start image and text -->
+    <h1>
+        <div id="headline-el">I'm</div>
+        <div>
+            <h4>Student, Developer</h4>
+        </div>
+    </h1>
+
+    <div id="topbar">
+        <a href="#headline-el">Home</a>
+        <a href="#intro">Who am I?</a>
+        <a href="#langs">My programming languages</a>
+        <a href="#cal">Calendar</a>
+        <a href="#contact">Contact</a>
+    </div>
+    
+    <!-- introduction -->
+    <div id="intro" class="container disapperaring">
+        <div class="image">
+            <img class="resize" src="assets/images/halfShadow.jpg">
+        </div>
+        <div class="text">
+            <h2>i'm a dedicated student at the TUM (<a href="https://www.tum.de/en/" target="_blank" class="touchable">Technical University Munich</a>) who loves programming</h2>
+            <h3>studying computer science since 2020, programming has been my big compasion.
+                Next to my prefered low level languages C and C++, my knowedge also contains Java, bash and Javascript basics. </h3>
+        </div>
+    </div>
+
+    <!-- programming knowledge -->
+    <table id="langs" class="darkened disapperaring">
+        <tr><td><h2>Java</h2></td>
+            <td><h2>bash</h2></td>
+            <td><h2>C</h2></td>
+            <td><h2>C++</h2></td>
+            <td><h2>Javascript</h2></td>
+        </tr>
+        <tr><td><h3>starting my programming journey in 2017. later working on small private projects</h3></td>
+            <td><h3>using linux you need the basics, but advanced scrips really help sometimes</h3></td>
+            <td><h3>studying computer science my first low level language arrived in 2021</h3></td>
+            <td><h3>I continued with low level languages and learned C++ in 2022</h3></td>
+            <td><h3>being something very different from what I knew until then, I learned some basics in 2022</h3></td>
+        </tr>
+        <tr><td id="java-btn" class="touchable">▼</td>
+            <td id="bash-btn" class="touchable">▼</td>
+            <td id="c-btn" class="touchable">▼</td>
+            <td id="cpp-btn" class="touchable">▼</td>
+            <td id="javascript-btn" class="touchable">▼</td>
+        </tr>
+    <table>
+    <!-- expandable -->
+    <div id="programming-exp" class="container darkened disapperaring">
+    </div>
+
+    <!-- free time -->
+    <div class="container disapperaring">
+        <div class="text">
+            <h2>My free-time</h2>
+            <h3>next to learning new programming languages and work on small private software projects (such as this website)
+                there are some other things i enjoy doing in my freetime:</h3>
+            <h3>• sailing once or twice every year</h3>
+            <h3>• occasionally playing the piano and guitar</h3>
+            <h3>• skiing in the Alps</h3>
+        </div>
+        <div class="image">
+            <img class="resize" src="assets/images/meSailing.jpg">
+        </div>
+    </div>
+
+    <!-- calendar -->
+    <div id="cal" class="darkened disapperaring">
+        <h2>When am I generally avaliable?</h2>
+        <div class="calendar">
+            <h3 id="month-back" class="calendarTop">ᐊ</h3>
+            <h3 id="calmonth" class="calendarTop">Month</h3>
+            <h3 id="month-next" class="calendarTop">ᐅ</h3>
+        </div>
+        <div id="calendar" class="calendar">
+            <div id="weekdays" class="container">
+                <div>Monday</div>
+                <div>Tuesday</div>
+                <div>Wednesday</div>
+                <div>Thursday</div>
+                <div>Friday</div>
+                <div>Saturday</div>
+                <div>Sunday</div>
+            </div>
+            <div id="calendarField" class="calendar"> </div>
+        </div>
+    </div>
+
+
+    <!--bottom contact info-->
+    <div id="contact" class="contact">
+        <h5>Contact me</h5>
+        <div>
+            <br>+49 (0)176 56750909 <br>
+            <a href="mailto:timon.ensel@gmx.de?body=
+                        %0A%0A_________________________
+                        %0AThis%20mail%20was%20sent%20through%20a%20link%20on%20your%20website
+                        %0Ahttp://127.0.0.1:5500/PersonalWebsite/index.html#">
+                timon.ensel@gmx.de
+            </a>
+        </div>
+    </div class="contact">
+    
+
+
+    <script src="index.js">/*or write here*/</script>
+</body>
+</html>
