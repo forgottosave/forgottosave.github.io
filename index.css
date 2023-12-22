@@ -71,6 +71,18 @@ table {
     width: 400px;
     height: auto;
 }
+.spotify{
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+}
+.ifrtop {
+    font-size: 15px;
+    position: absolute;
+    left: 10px;
+    bottom: 90px;
+    width: 400px;
+}
 
 /* Links */
 a {
