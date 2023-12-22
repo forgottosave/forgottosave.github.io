@@ -20,7 +20,7 @@ const calMonthBack = document.getElementById("month-back")
 // CHANGEABLES
 const iam = [ ' Timon Ole Ensel               ',
             ' a TUM Student             ',
-            ' a Software Engineer             ',
+            ' a Software Architect             ',
             ' a Problem Solver             '
 ]
 
@@ -116,27 +116,27 @@ function changeProgExp(tab, image, text) {
 }
 javaBtn.addEventListener('click', function() {
     changeProgExp(0, 
-        "assets/images/spacentScreenshot.png", 
-        "Java was my first programming language and therefor the one I'm probably most experienced in. In 2017 i started to learn it in school. 2020 I expanded my knowledge in it through a university course. Since I've worked on a few private projects, such as an own game (see left) and an interface for a chess analyzing tool.")
+        "assets/images/IDE.png", 
+        "In 2017 I started with Java in school, but quickly expanded my knowledge with low-level languages like C and C++. In my free time I love to work on small scripts, games,or contribute to Open Source Projects to strengthen my knowledge in this area.")
 })
 bashBtn.addEventListener('click', function() {
     changeProgExp(1, 
-        "assets/images/spacentScreenshot.png", 
-        "Bash. In 2017 i started to learn it in school. 2020 I expanded my knowledge in it through a university course. Since I've worked on a few private projects, such as an own game (see left) and an interface for a chess analyzing tool.")
+        "assets/images/pragmaticsoftwarearchitect-blogspot-com.png", 
+        "Big software projects deserve big planning. As a Software Architect, I love to analyze requirements and structures of those projects and got some experience in it while working at IABG and contributing to Open Source Projects.")
 })
 cBtn.addEventListener('click', function() {
     changeProgExp(2, 
-        "assets/images/spacentScreenshot.png", 
-        "C. In 2017 i started to learn it in school. 2020 I expanded my knowledge in it through a university course. Since I've worked on a few private projects, such as an own game (see left) and an interface for a chess analyzing tool.")
+        "assets/images/GitHubProfile.png", 
+        "Open Source. Maybe my favorite part as a software developer so far. 2022 I started my journey on GitHub. Ever since I contributed to projects like Xournal++ and published my own scripts and games.")
 })
 cppBtn.addEventListener('click', function() {
     changeProgExp(3, 
-        "assets/images/spacentScreenshot.png", 
-        "C++. In 2017 i started to learn it in school. 2020 I expanded my knowledge in it through a university course. Since I've worked on a few private projects, such as an own game (see left) and an interface for a chess analyzing tool.")
+        "assets/images/IT-sec-Paper.png", 
+        "During the course of my studies, I took some IT-security related classes: 'IT-Security' by Prof. Claudia Eckhardt and my Seminar Thesis, 'A Discussion on Noise Addition for Relay Attack Detection'. Both gave me important insight into this important area.")
 })
 javascriptBtn.addEventListener('click', function() {
     changeProgExp(4, 
-        "assets/images/spacentScreenshot.png", 
+        "assets/images/AWS.png", 
         "Javascript. In 2017 i started to learn it in school. 2020 I expanded my knowledge in it through a university course. Since I've worked on a few private projects, such as an own game (see left) and an interface for a chess analyzing tool.")
 })
 

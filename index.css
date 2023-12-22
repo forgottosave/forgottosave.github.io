@@ -5,8 +5,8 @@ body {
     line-height: 20px;
     letter-spacing: 0.02em;
     text-align: center;
-    background: #fff;
-    color: gray;
+    color: #E0E1DD;
+    background: #0D1B2A;
     overflow-x: hidden;
     margin: 0 auto;
     padding: 0;
@@ -15,7 +15,7 @@ body {
 
 /* TOPBAR */
 #topbar {
-    background-color: #333;
+    background-color: #415A77;
     position: fixed;
     top: 0;
     width: 100%;
@@ -24,7 +24,7 @@ body {
 #topbar a {
     float: left;
     display: block;
-    color: #f2f2f2;
+    color: #E0E1DD;
     text-align: center;
     padding: 14px;
     text-decoration: none;
@@ -38,7 +38,8 @@ body {
     justify-content: center
 }
 .darkened {
-    background-color: #f8f6fd;
+    background-color: #1B263B;
+    color: white;
 }
 .disappearing {
     opacity: 50%;
@@ -55,9 +56,10 @@ table {
     width: 100%;
 }
 .contact {
-    background-color: azure;
-    margin-bottom: 0px;
-    padding-bottom: 0px;
+    background-color: #1B263B;
+    color: #E0E1DD;
+    padding-bottom: 30px;
+    margin-top: 30px;
   }
 .image {
     flex-basis: 40%
@@ -112,7 +114,6 @@ h4 {
 
 h5 {
     font-size: 28px;
-    background-color: azure;
     padding-top: 20px;
     margin-bottom: 0px;
 }
