@@ -11,11 +11,6 @@ const cBtn = document.getElementById("c-btn")
 const cppBtn = document.getElementById("cpp-btn")
 const javascriptBtn = document.getElementById("javascript-btn")
 const progBtns = [javaBtn, bashBtn, cBtn, cppBtn, javascriptBtn]
-// calendar
-const calMonthField = document.getElementById("calmonth")
-const calField = document.getElementById("calendarField")
-const calMonthNext = document.getElementById("month-next")
-const calMonthBack = document.getElementById("month-back")
 
 // CHANGEABLES
 const iam = [ ' Timon Ole Ensel               ',
@@ -96,7 +91,7 @@ window.addEventListener('scroll', function() {
 
 // Programming Expandable
 let isExpanded = -1
-let markedColor = 'black'
+let markedColor = 'white'
 function resetBtns() {
     progBtns.forEach(element => {
         element.style.color = 'gray'
@@ -127,17 +122,17 @@ bashBtn.addEventListener('click', function() {
 })
 cBtn.addEventListener('click', function() {
     changeProgExp(2, 
-        "assets/images/GitHubProfile.png", 
-        "Open Source. Maybe my favorite part as a software developer so far. 2022 I started my journey on GitHub. Ever since I contributed to projects like Xournal++ and published my own scripts and games.")
+        "assets/images/GitHubActivity.png", 
+        "Open Source. Probably my favorite part as a software developer. 2022 I started my journey on GitHub. Ever since I contributed to projects like Xournal++ and published my own scripts and games on my GitHub profile @forgottosave.")
 })
 cppBtn.addEventListener('click', function() {
     changeProgExp(3, 
         "assets/images/IT-sec-Paper.png", 
-        "During the course of my studies, I took some IT-security related classes: 'IT-Security' by Prof. Claudia Eckhardt and my Seminar Thesis, 'A Discussion on Noise Addition for Relay Attack Detection'. Both gave me important insight into this important area.")
+        "During the course of my studies, I took some IT-security related classes: 'IT-Security' by Prof. Claudia Eckhardt and my Seminar Thesis, 'A Discussion on Noise Addition for Relay Attack Detection'. Both gave me important insight into this very important and highly interesting area.")
 })
 javascriptBtn.addEventListener('click', function() {
     changeProgExp(4, 
         "assets/images/AWS.png", 
-        "Javascript. In 2017 i started to learn it in school. 2020 I expanded my knowledge in it through a university course. Since I've worked on a few private projects, such as an own game (see left) and an interface for a chess analyzing tool.")
+        "I am happy to announce that soon Cloud Computing will be the newest addition to my set of skills. I am currently in the midst of learning everything about it, using AWS-educate by the AWS cloud service provider.")
 })
 
