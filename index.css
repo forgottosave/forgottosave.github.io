@@ -53,14 +53,6 @@ html {
 .touchable {
     cursor: pointer;
 }
-img {
-     max-width: 100%
-}
-table {
-    padding-top: 20px;
-    table-layout: fixed;
-    width: 100%;
-}
 .contact {
     background-color: #1B263B;
     color: #E0E1DD;
@@ -77,6 +69,15 @@ table {
     width: 400px;
     height: auto;
 }
+img {
+     max-width: 100%
+}
+table {
+    padding-top: 20px;
+    table-layout: fixed;
+    width: 100%;
+}
+/* Embedded Spotify Block*/
 .spotify{
     position: absolute;
     left: 10px;
@@ -134,48 +135,6 @@ h5 {
     font-size: 28px;
     padding-top: 20px;
     margin-bottom: 0px;
-}
-
-p {
-    margin: 25px 0;
-    padding: 0;
-    font-size: 15px;
-    color: #999999;
-    line-height: 28px;
-}
-
-.calendar {
-    cursor: default;
-    display: flex;
-    width: 770px;
-    flex-wrap: wrap;
-}
-.calendarTop {
-    padding-left: 5px;
-    padding-right: 5px;
-}
-#weekdays {
-    width: 100%;
-    display: block;
-    columns: 7;
-    padding-right: 7.5%;
-    padding-left: 1%;
-}
-.day {
-    width: 12%;
-    padding: 10px;
-    height: 60px;
-    cursor: pointer;
-    box-sizing: border-box;
-    background-color: white;
-    margin: 5px;
-    box-shadow: 0px 0px 3px #c2d2d4;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-.padding {
-    visibility: hidden;
 }
 
 /* SCROLL ARROW credits: https://unused-css.com/blog/animated-down-arrow/ */
