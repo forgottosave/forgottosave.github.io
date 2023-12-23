@@ -25,7 +25,6 @@ html {
     left: 4px;
     right: 4px;
     border-radius: 12px;
-    visibility: hidden;
 }
 #topbar a {
     float: left;
@@ -35,7 +34,11 @@ html {
     padding: 14px;
     text-decoration: none;
 }
-
+#topbar a:hover {
+    color: white;
+    transition: 0.2s;
+    transform: translateY(2px);
+}
 
 /* CLASSES */
 .container {
@@ -52,6 +55,11 @@ html {
 }
 .touchable {
     cursor: pointer;
+}
+.touchable:hover {
+    transition: 0.2s;
+    transform: translateY(4px);
+    transform: scale(1.2);
 }
 .contact {
     background-color: #1B263B;
