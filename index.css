@@ -25,6 +25,7 @@ html {
     left: 4px;
     right: 4px;
     border-radius: 12px;
+    visibility: hidden;
 }
 #topbar a {
     float: left;
