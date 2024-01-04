@@ -112,7 +112,7 @@ function changeProgExp(tab, image, text) {
 }
 javaBtn.addEventListener('click', function() {
     changeProgExp(0, 
-        "assets/images/IDE.png", 
+        "assets/images/IDE.webp", 
         "In 2017 I started with Java in school, but quickly expanded my knowledge with low-level languages like C and C++. In my free time I love to work on small scripts, games,or contribute to Open Source Projects to strengthen my knowledge in this area.")
 })
 bashBtn.addEventListener('click', function() {
@@ -122,12 +122,12 @@ bashBtn.addEventListener('click', function() {
 })
 cBtn.addEventListener('click', function() {
     changeProgExp(2, 
-        "assets/images/GitHubActivity.png", 
+        "assets/images/GitHubActivity.webp", 
         "Open Source. Probably my favorite part as a software developer. 2022 I started my journey on GitHub. Ever since I contributed to projects like Xournal++ and published my own scripts and games on my GitHub profile @forgottosave.")
 })
 cppBtn.addEventListener('click', function() {
     changeProgExp(3, 
-        "assets/images/IT-sec-Paper.png", 
+        "assets/images/IT-sec-Paper.webp", 
         "During the course of my studies, I took some IT-security related classes: 'IT-Security' by Prof. Claudia Eckhardt and my Seminar Thesis, 'A Discussion on Noise Addition for Relay Attack Detection'. Both gave me important insight into this very important and highly interesting area.")
 })
 javascriptBtn.addEventListener('click', function() {
