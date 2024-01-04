@@ -12,26 +12,12 @@ const cppBtn = document.getElementById("cpp-btn")
 const javascriptBtn = document.getElementById("javascript-btn")
 const progBtns = [javaBtn, bashBtn, cBtn, cppBtn, javascriptBtn]
 
-// CHANGEABLES
+// TYPER
 const iam = [ ' Timon Ole Ensel               ',
             ' a TUM Student             ',
             ' a Software Architect             ',
             ' a Problem Solver             '
 ]
-
-/* TOUCHABLES
-let i = touchableElements.length
-while(i--) {
-    let tmp = touchableElements[i]
-    touchableElements[i].addEventListener('mouseover', function() {
-        tmp.style.color = 'black'
-    })
-    touchableElements[i].addEventListener('mouseleave', function() {
-        tmp.style.color = 'gray'
-    })
-}*/
-
-// TYPER
 let iamText = 'I\'m'
 let whoami = 0
 let curserPos = 0
