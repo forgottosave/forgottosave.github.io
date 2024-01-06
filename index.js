@@ -94,7 +94,7 @@ function changeProgExp(tab, image, text) {
         isExpanded = tab
         resetBtns()
         progBtns[tab].style.color = markedColor;
-        progExp.innerHTML = "<div class=\"image\">\n<img class=\"resize\" src=" + image + ">irrelevant design image</div>"
+        progExp.innerHTML = "<div class=\"image\">\n<img class=\"resize\" src=" + image + "></div>"
             +"\n<div class=\"text\">\n<h3>" + text + "\n</div>"
     }
 }
