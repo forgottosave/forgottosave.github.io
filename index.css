@@ -82,9 +82,21 @@ img {
      max-width: 100%
 }
 table {
-    padding-top: 20px;
-    table-layout: fixed;
-    width: 100%;
+	overflow: auto;
+	white-space: nowrap;
+}
+stitem {
+	display: inline-block;
+	color: white;
+	text-align: center;
+	padding: 14px;
+	text-decoration: none;
+}
+stitem:hover {
+	background-color: #0D1B2A;
+	transform: 0.2s;
+	transform: scale(98%);
+	border-radius: 10px;
 }
 /* Embedded Spotify Block*/
 .spotify{

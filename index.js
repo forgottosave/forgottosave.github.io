@@ -5,12 +5,12 @@ const disappearingElements = document.getElementsByClassName('disapperaring')
 const touchableElements = document.getElementsByClassName('touchable')
 // programming exp
 const progExp = document.getElementById("programming-exp")
-const javaBtn = document.getElementById("java-btn")
-const bashBtn = document.getElementById("bash-btn")
-const cBtn = document.getElementById("c-btn")
-const cppBtn = document.getElementById("cpp-btn")
-const javascriptBtn = document.getElementById("javascript-btn")
-const progBtns = [javaBtn, bashBtn, cBtn, cppBtn, javascriptBtn]
+const devBtn = document.getElementById("dev-btn")
+const arcBtn = document.getElementById("arc-btn")
+const fossBtn = document.getElementById("foss-btn")
+const itsecBtn = document.getElementById("itsec-btn")
+const cloudBtn = document.getElementById("cloud-btn")
+const progBtns = [devBtn, arcBtn, fossBtn, itsecBtn, cloudBtn]
 
 // TYPER
 const iam = [ ' Timon Ole Ensel               ',
@@ -96,29 +96,30 @@ function changeProgExp(tab, image, text) {
             +"\n<div class=\"text\">\n<h3>" + text + "\n</div>"
     }
 }
-javaBtn.addEventListener('click', function() {
+devBtn.addEventListener('click', function() {
     changeProgExp(0, 
         "assets/images/IDE.webp", 
         "In 2017 I started with Java in school, but quickly expanded my knowledge with low-level languages like C and C++. In my free time I love to work on small scripts, games,or contribute to Open Source Projects to strengthen my knowledge in this area.")
 })
-bashBtn.addEventListener('click', function() {
+arcBtn.addEventListener('click', function() {
     changeProgExp(1, 
         "assets/images/pragmaticsoftwarearchitect-blogspot-com.png", 
         "Big software projects deserve big planning. As a Software Architect, I love to analyze requirements and structures of those projects and got some experience in it while working at IABG and contributing to Open Source Projects.")
 })
-cBtn.addEventListener('click', function() {
+fossBtn.addEventListener('click', function() {
     changeProgExp(2, 
         "assets/images/GitHubActivity.webp", 
         "Open Source. Probably my favorite part as a software developer. 2022 I started my journey on GitHub. Ever since I contributed to projects like Xournal++ and published my own scripts and games on my GitHub profile @forgottosave.")
 })
-cppBtn.addEventListener('click', function() {
+itsecBtn.addEventListener('click', function() {
     changeProgExp(3, 
         "assets/images/IT-sec-Paper.webp", 
         "During the course of my studies, I took some IT-security related classes: 'IT-Security' by Prof. Claudia Eckhardt and my Seminar Thesis, 'A Discussion on Noise Addition for Relay Attack Detection'. Both gave me important insight into this very important and highly interesting area.")
 })
-javascriptBtn.addEventListener('click', function() {
+cloudBtn.addEventListener('click', function() {
     changeProgExp(4, 
         "assets/images/AWS.png", 
         "I am happy to announce that soon Cloud Computing will be the newest addition to my set of skills. I am currently in the midst of learning everything about it, using AWS-educate by the AWS cloud service provider.")
 })
-
+// set 'Open Source' as standard
+devBtn.click();
