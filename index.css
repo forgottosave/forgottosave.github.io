@@ -107,8 +107,8 @@ stitem:hover {
 .ifrtop {
     font-size: 15px;
     position: absolute;
-    left: 10px;
-    bottom: 90px;
+    left: 20px;
+    bottom: 160px;
     width: 400px;
 }
 

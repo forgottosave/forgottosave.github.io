@@ -3,7 +3,7 @@ const navbar = document.getElementById("topbar");
 const headEl = document.getElementById("headline-el")
 const disappearingElements = document.getElementsByClassName('disapperaring')
 const touchableElements = document.getElementsByClassName('touchable')
-// programming exp
+// skill-table
 const progExp = document.getElementById("programming-exp")
 const devBtn = document.getElementById("dev-btn")
 const arcBtn = document.getElementById("arc-btn")
@@ -11,6 +11,7 @@ const fossBtn = document.getElementById("foss-btn")
 const itsecBtn = document.getElementById("itsec-btn")
 const cloudBtn = document.getElementById("cloud-btn")
 const progBtns = [devBtn, arcBtn, fossBtn, itsecBtn, cloudBtn]
+
 
 // TYPER
 const iam = [ ' Timon Ole Ensel               ',
@@ -47,7 +48,6 @@ function typer_add(who) {
     state = true
 }
 function renderTyper() {
-    // TODO add cursor │
     if(state){
         typer_add()
     } else {
@@ -56,6 +56,7 @@ function renderTyper() {
     headEl.innerText = iamText
 }
 window.setInterval(renderTyper, 108);
+
 
 // SCROLL SETTINGS
 window.addEventListener('scroll', function() {
@@ -75,7 +76,8 @@ window.addEventListener('scroll', function() {
   }
 )
 
-// Programming Expandable
+
+// SKILL-TABLE
 let isExpanded = -1
 let markedColor = 'white'
 function resetBtns() {
@@ -92,10 +94,11 @@ function changeProgExp(tab, image, text) {
         isExpanded = tab
         resetBtns()
         progBtns[tab].style.color = markedColor;
-        progExp.innerHTML = "<div class=\"image\">\n<img class=\"resize\" src=" + image + ">\n</div>"
+        progExp.innerHTML = "<div class=\"image\">\n<img class=\"resize\" src=" + image + ">irrelevant design image</div>"
             +"\n<div class=\"text\">\n<h3>" + text + "\n</div>"
     }
 }
+// Specified Entries
 devBtn.addEventListener('click', function() {
     changeProgExp(0, 
         "assets/images/IDE.webp", 
@@ -121,5 +124,6 @@ cloudBtn.addEventListener('click', function() {
         "assets/images/AWS.png", 
         "I am happy to announce that soon Cloud Computing will be the newest addition to my set of skills. I am currently in the midst of learning everything about it, using AWS-educate by the AWS cloud service provider.")
 })
-// set 'Open Source' as standard
+// set pre-selection for skill-table
 devBtn.click();
+
