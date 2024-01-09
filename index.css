@@ -157,7 +157,12 @@ h5 {
     margin-bottom: 0px;
 }
 
-/* SCROLL ARROW credits: https://unused-css.com/blog/animated-down-arrow/ */
+/* SCROLL ARROW, external code by:
+ * @author UnusedCSS
+ * @date   09.01.23
+ * @title  Animated Scrol Down Arrow
+ * @web    https://unused-css.com/blog/animated-down-arrow/
+ */
 .scroll-down {
   position: absolute;
   left: 50%;
