@@ -2,6 +2,17 @@
   box-sizing: border-box;
 }
 
+
+
+/* BLOG ENTRY */
+tt {
+  color: orange;
+  font-size: 20px;
+  padding-left: 10px;
+}
+
+
+
 /* Create two unequal columns that floats next to each other */
 /* Left column */
 .blogcolumn {
