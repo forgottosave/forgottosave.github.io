@@ -3,8 +3,25 @@
 }
 
 
+/* _____ BLOG PAGE _____ */
+touchbutton {
+	display: inline-block;
+	color: gray;
+	text-align: center;
+	padding: 14px;
+	text-decoration: none;
+	padding-top:0px;
+	padding-bottom:0px;
+}
+touchbutton:hover {
+	background-color: gray;
+	color: white;
+	transform: 0.2s;
+	transform: scale(98%);
+	border-radius: 10px;
+}
 
-/* BLOG ENTRY */
+/* _____ BLOG ENTRY _____ */
 tt {
   color: orange;
   font-size: 20px;
@@ -12,28 +29,21 @@ tt {
 }
 
 
+/* _____ GENERAL _____ */
 
-/* Create two unequal columns that floats next to each other */
-/* Left column */
+/* Blog Column */
 .blogcolumn {
   float: left;
   width: 75%;
   padding-right: 10px;
 }
 
-/* Right column */
+/* Info Column */
 .infocolumn {
   float: left;
   width: 25%;
   padding-right: 20px;
   padding-left: 10px;
-}
-
-/* Fake image */
-.fakeimg {
-  background-color: #aaa;
-  width: 100%;
-  padding: 20px;
 }
 
 /* Add a card effect for articles */
@@ -62,7 +72,7 @@ tt {
   clear: both;
 }
 
-/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+/* Maybe adaptive screen layout??  Not quiet working yet... */
 @media screen and (max-width: 800px) {
   .leftcolumn, .rightcolumn {
     width: 100%;
