@@ -110,7 +110,7 @@
       <div id="cv" class="container disapperaring" style="margin-top:60px">
           <div class="text">
               <h2>Curriculum Vitae</h2>
-              <h3>Here you can find a short version of my CV. The full version can be downloaded here: <a href="assets/documents/CV_Timon_Ensel_en.pdf" download>CV download</a>. Also, feel free to visit my <a href="https://de.linkedin.com/in/timon-ensel" target="_blank" class="touchable">LinkedIn</a>.</h3>
+              <h3>Here you can find a short version of my CV. The full version can be downloaded with the button at the bottom. Also, feel free to visit my <a href="https://de.linkedin.com/in/timon-ensel" target="_blank" class="touchable">LinkedIn</a>.</h3>
               
               <h3 style="padding-top:20px">WORK EXPERIENCE</h3>
               <hr style="width:80%;text-align:left;margin-left:0;margin-top:-15px">
@@ -139,6 +139,11 @@
               <h3 style="padding-left:40px">
               	• Advanced git skills
               </h3>
+              <clickbox id="dev-btn" onclick="location.href='assets/documents/CV_Timon_Ensel_en.pdf'" download>
+    			<h3>
+    				Download CV
+    			</h3>
+    		</stitem>
           </div>
           <div class="image">
               <img class="resize" src="assets/images/Logos-TUM-IABG-Effner.webp" alt="Logos: TUM, IABG, Effner">
@@ -157,10 +162,10 @@
             <h3>• IT, Software Development, Carreer</h3>
             <h3>• Sailing</h3>
             <h3>• ...and much more</h3>
-            <stitem id="dev-btn" onclick="location.href='blog.html';" style="cursor:pointer;background:#415A77;border-radius:40px;padding:20px;float:right;margin-right:20%">
-    			<h2>
+            <clickbox id="dev-btn" onclick="location.href='blog.html';">
+    			<h3>
     				visit my Blog
-    			</h2>
+    			</h3>
     		</stitem>
         </div>
     </div>
@@ -174,7 +179,7 @@
             <h3>• Sailing once or twice per year</h3>
             <h3>• Playing Chess</h3>
             <h3>• Bouldering & Climbing</h3>
-            <stitem id="dev-btn" onclick="location.href='personal.html';" style="cursor:pointer;background:#415A77;border-radius:40px;padding:10px;float:left;margin-left:20%">
+            <stitem id="dev-btn" onclick="location.href='personal.html';" style="cursor:pointer;background:#415A77;border-radius:40px;padding:10px;padding-left:20px;padding-right:20px;float:left;margin-left:20%">
     			<h3>
     				Page for Friends & Family
     			</h3>

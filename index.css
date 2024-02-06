@@ -98,6 +98,25 @@ stitem:hover {
 	transform: scale(98%);
 	border-radius: 10px;
 }
+clickbox {
+	display: inline-block;
+	color: white;
+	text-align: center;
+	padding: 14px;
+	text-decoration: none;
+	cursor: pointer;
+	background: #415A77;
+	border-radius: 40px;
+	padding: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	float: left;
+	margin-left: 35%
+}
+clickbox:hover {
+	transform: 0.2s;
+	transform: scale(95%);
+}
 /* Embedded Spotify Block*/
 .spotify{
     position: absolute;
