@@ -5,9 +5,9 @@ const touchableElements = document.getElementsByClassName('touchable')
 // selectable boxes
 const timeBtn = document.getElementById("time-btn")
 const wishBtn = document.getElementById("wish-btn")
-const actiBtn = document.getElementById("acti-btn")
-const carrBtn = document.getElementById("carr-btn")
-const btns = [timeBtn, wishBtn, actiBtn, carrBtn]
+//const actiBtn = document.getElementById("acti-btn")
+//const carrBtn = document.getElementById("carr-btn")
+const btns = [timeBtn, wishBtn]//, actiBtn, carrBtn]
 const timeSec = document.getElementById("busytimes")
 const wishSec = document.getElementById("wishlist")
 const actiSec = document.getElementById("activities")
@@ -63,12 +63,12 @@ timeBtn.addEventListener('click', function() {
 wishBtn.addEventListener('click', function() {
     changeProgExp(1)
 })
-actiBtn.addEventListener('click', function() {
-    changeProgExp(2)
-})
-carrBtn.addEventListener('click', function() {
-    window.location.href = "https://timon-ensel.de"
-})
+//actiBtn.addEventListener('click', function() {
+//    changeProgExp(2)
+//})
+//carrBtn.addEventListener('click', function() {
+//    window.location.href = "https://timon-ensel.de"
+//})
 // set pre-selection for skill-table
 changeProgExp(0);
 
