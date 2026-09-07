@@ -330,7 +330,8 @@
         .spotlight {
             margin-top: 26px;
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+            gap: 18px;
             align-items: stretch;
         }
 
@@ -411,6 +412,78 @@
             height: 352px;
             border: 0;
             display: block;
+        }
+
+        .playlist-guide-panel {
+            border-radius: 30px;
+            padding: 24px;
+            display: grid;
+            gap: 18px;
+        }
+
+        .playlist-guide-panel .guide-title {
+            margin: 10px 0 0;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(1.45rem, 2.2vw, 2rem);
+            letter-spacing: -0.03em;
+        }
+
+        .playlist-guide-panel .guide-copy {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        .playlist-guide-map {
+            display: grid;
+            gap: 10px;
+        }
+
+        .playlist-guide-node {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 12px;
+            align-items: center;
+            padding: 14px 15px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .playlist-guide-node .marker {
+            width: 14px;
+            height: 14px;
+            border-radius: 999px;
+            box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.03);
+        }
+
+        .playlist-guide-node strong {
+            display: block;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 0.98rem;
+            letter-spacing: 0.01em;
+        }
+
+        .playlist-guide-node span {
+            display: block;
+            color: var(--muted);
+            font-size: 0.88rem;
+            line-height: 1.45;
+            margin-top: 2px;
+        }
+
+        .playlist-guide-footer {
+            display: grid;
+            gap: 8px;
+            padding-top: 2px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--muted);
+            line-height: 1.65;
+            font-size: 0.95rem;
+        }
+
+        .playlist-guide-footer strong {
+            color: var(--text);
         }
 
         .detail-panel {
@@ -553,6 +626,37 @@
         .playlist-card.active {
             border-color: rgba(141, 245, 169, 0.32);
             box-shadow: 0 24px 48px rgba(141, 245, 169, 0.11), var(--shadow);
+        }
+
+        .playlist-card.featured-favorites {
+            border-color: rgba(141, 245, 169, 0.42);
+            box-shadow: 0 24px 52px rgba(141, 245, 169, 0.16), var(--shadow);
+        }
+
+        .playlist-card.featured-train {
+            border-color: rgba(109, 199, 255, 0.42);
+            box-shadow: 0 24px 52px rgba(109, 199, 255, 0.14), var(--shadow);
+        }
+
+        .playlist-card.featured-favorites::before {
+            background: radial-gradient(420px circle at var(--card-x, 50%) var(--card-y, 50%), rgba(141, 245, 169, 0.34), transparent 52%);
+        }
+
+        .playlist-card.featured-train::before {
+            background: radial-gradient(420px circle at var(--card-x, 50%) var(--card-y, 50%), rgba(109, 199, 255, 0.34), transparent 52%);
+        }
+
+        .playlist-card.featured-favorites .playlist-badge,
+        .playlist-card.featured-train .playlist-badge {
+            color: var(--text);
+        }
+
+        .playlist-card.featured-favorites .playlist-badge {
+            background: rgba(141, 245, 169, 0.12);
+        }
+
+        .playlist-card.featured-train .playlist-badge {
+            background: rgba(109, 199, 255, 0.12);
         }
 
         .playlist-top {
@@ -757,6 +861,44 @@
                     </div>
                 </div>
             </div>
+
+            <aside class="playlist-guide-panel glass-panel" aria-label="Playlist overview">
+                <div>
+                    <!-- <div class="label"><i class="fa-solid fa-map-location-dot"></i> how the archive is organized</div> -->
+                    <h3 class="guide-title">How the playlists are organized.</h3>
+                </div>
+                <p class="guide-copy">
+                    All of my music is "stored" in a single big archive playlist called <strong>Train Tracks</strong>. It is broken down into three sub-lanes: <strong>SUPERMASSIVE</strong>, <strong>Human Music</strong>, and <strong>TECHNO TRAIN</strong>.
+                    Although <strong>Timon's Favorites</strong> is probably the best entry point for my current listening.
+                </p>
+                <div class="playlist-guide-map">
+                    <div class="playlist-guide-node">
+                        <span class="marker" style="background: rgba(141, 245, 169, 0.95);"></span>
+                        <div>
+                            <strong>Timon's Favorites</strong>
+                            <span>Best starting point for a current snapshot of what I'm listening to now.</span>
+                        </div>
+                    </div>
+                    <div class="playlist-guide-node">
+                        <span class="marker" style="background: rgba(109, 199, 255, 0.95);"></span>
+                        <div>
+                            <strong>Train Tracks</strong>
+                            <span>The big archive playlist that contains the rest of the collection.</span>
+                        </div>
+                    </div>
+                    <div class="playlist-guide-node">
+                        <span class="marker" style="background: rgba(255, 211, 110, 0.95);"></span>
+                        <div>
+                            <strong>SUPERMASSIVE · Human Music · TECHNO TRAIN</strong>
+                            <span>Three sub-categories inside Train Tracks for experimental, everyday, and techno-focused listening.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="playlist-guide-footer">
+                    <span><strong>Everything else</strong> is basically a smaller cut from Train Tracks.</span>
+                    <!--<span>So the browser works best if you treat Favorites as the doorway and Train Tracks as the archive spine.</span>-->
+                </div>
+            </aside>
 
         </section>
 
@@ -1424,7 +1566,7 @@
             emptyStateEl.style.display = visible.length ? 'none' : 'block';
 
             playlistGridEl.innerHTML = visible.map((playlist) => `
-                <article class="playlist-card ${playlist.id === state.selectedId ? 'active' : ''}" data-id="${escapeHtml(playlist.id)}" tabindex="0" role="button" aria-label="Open ${escapeHtml(playlist.title)}">
+                <article class="playlist-card ${playlist.id === state.selectedId ? 'active' : ''} ${playlist.id === 'timon-s-favorites' ? 'featured-favorites' : ''} ${playlist.id === 'train-tracks' ? 'featured-train' : ''}" data-id="${escapeHtml(playlist.id)}" tabindex="0" role="button" aria-label="Open ${escapeHtml(playlist.title)}">
                     <div class="playlist-top">
                         <div>
                             <div class="playlist-badge"><i class="fa-solid fa-music"></i> ${escapeHtml(playlist.category)}</div>
