@@ -806,7 +806,7 @@
     <main class="page">
         <header class="topbar">
             <a class="brand" href="https://open.spotify.com/user/31yuxsvhatkaxdjcbjozsuogal4e?si=5e5391497598461c">
-                <div class="brand-mark"><i class="fa-solid fa-wave-square"></i></div>
+                <div class="brand-mark"><i class="fas fa-wave-square"></i></div>
                 <div class="brand-copy">
                     <h1>Timon Ensel - Tvlp Hpe</h1>
                     <p>Spotify playlist atlas</p>
@@ -823,22 +823,22 @@
 
         <section class="hero">
             <div class="hero-panel">
-                <!-- <div class="eyebrow"><i class="fa-solid fa-circle-play"></i> curated public playlists, organized like a product</div> -->
+                <!-- <div class="eyebrow"><i class="fas fa-play-circle"></i> curated public playlists, organized like a product</div> -->
                 <h2>Browse my <span class="accent">playlists</span> faster.</h2>
                 <p class="hero-copy">
                     Over time I have created a lot of public Spotify playlists, but they are scattered across my profile and hard to navigate.
                     This page is a living dashboard for a sorted overview of my Spotify playlists, so… enjoy :)
                 </p>
                 <div class="hero-actions">
-                    <a class="button button-primary" href="#library"><i class="fa-solid fa-compass"></i> Explore library</a>
-                    <a class="button button-secondary" href="#spotlight"><i class="fa-brands fa-spotify"></i> Jump to player</a>
-                    <a class="button button-secondary" href="https://open.spotify.com/user/31yuxsvhatkaxdjcbjozsuogal4e?si=fd6914c1a28e4935"><i class="fa-brands fa-spotify"></i> My Spotify Profile</a>
+                    <a class="button button-primary" href="#library"><i class="fas fa-compass"></i> Explore library</a>
+                    <a class="button button-secondary" href="#spotlight"><i class="fab fa-spotify"></i> Jump to player</a>
+                    <a class="button button-secondary" href="https://open.spotify.com/user/31yuxsvhatkaxdjcbjozsuogal4e?si=fd6914c1a28e4935"><i class="fab fa-spotify"></i> My Spotify Profile</a>
                 </div>
             </div>
             <div class="stats-panel">
                 <div class="section-header">
                     <div>
-                        <div class="label"><i class="fa-solid fa-chart-simple"></i> quick stats</div>
+                        <div class="label"><i class="fas fa-chart-bar"></i> quick stats</div>
                         <!-- <h3 class="section-title">A glanceable overview</h3> -->
                     </div>
                 </div>
@@ -850,7 +850,7 @@
         <section class="spotlight" id="spotlight">
             <div class="spotlight-frame">
                 <div class="spotlight-header">
-                    <div class="label"><i class="fa-brands fa-spotify"></i> featured playlist</div>
+                    <div class="label"><i class="fab fa-spotify"></i> featured playlist</div>
                     <h3 class="spotlight-title" id="featuredTitle">Loading playlist...</h3>
                     <div class="spotlight-meta" id="featuredMeta"></div>
                     <p class="spotlight-copy" id="featuredDescription"></p>
@@ -865,7 +865,7 @@
 
             <aside class="playlist-guide-panel glass-panel" aria-label="Playlist overview">
                 <div>
-                    <!-- <div class="label"><i class="fa-solid fa-map-location-dot"></i> how the archive is organized</div> -->
+                    <!-- <div class="label"><i class="fas fa-map-marker-alt"></i> how the archive is organized</div> -->
                     <h3 class="guide-title">How the playlists are organized.</h3>
                 </div>
                 <p class="guide-copy">
@@ -906,7 +906,7 @@
         <section class="glass-panel" id="library" style="margin-top: 22px;">
             <div class="section-header">
                 <div>
-                    <div class="label"><i class="fa-solid fa-magnifying-glass"></i> playlist library</div>
+                    <div class="label"><i class="fas fa-search"></i> playlist library</div>
                     <h3 class="section-title">Browse by category, mood, or title</h3>
                     <p class="section-note">Use the filters to focus the page on a single lane, or search across all playlists at once.</p>
                 </div>
@@ -915,7 +915,7 @@
 
             <div class="controls">
                 <label class="searchbar" for="playlistSearch">
-                    <i class="fa-solid fa-search"></i>
+                    <i class="fas fa-search"></i>
                     <input id="playlistSearch" type="search" placeholder="Search playlists, moods, and tags..." autocomplete="off">
                 </label>
 
@@ -1599,10 +1599,10 @@
             `;
             featuredActionsEl.innerHTML = `
                 <a class="playlist-action primary" href="${escapeHtml(playlist.spotifyUrl)}" target="_blank" rel="noreferrer">
-                    <i class="fa-brands fa-spotify"></i> Open in Spotify
+                    <i class="fab fa-spotify"></i> Open in Spotify
                 </a>
                 <button class="playlist-action" type="button" data-copy="${escapeHtml(playlist.spotifyUrl)}">
-                    <i class="fa-solid fa-link"></i> Copy link
+                    <i class="fas fa-link"></i> Copy link
                 </button>
             `;
             featuredEmbedEl.src = playlist.embedUrl;
@@ -1624,19 +1624,19 @@
                 <article class="playlist-card ${playlist.id === state.selectedId ? 'active' : ''} ${playlist.id === 'timon-s-favorites' ? 'featured-favorites' : ''} ${playlist.id === 'train-tracks' ? 'featured-train' : ''}" data-id="${escapeHtml(playlist.id)}" tabindex="0" role="button" aria-label="Open ${escapeHtml(playlist.title)}">
                     <div class="playlist-top">
                         <div>
-                            <div class="playlist-badge"><i class="fa-solid fa-music"></i> ${escapeHtml(playlist.category)}</div>
+                            <div class="playlist-badge"><i class="fas fa-music"></i> ${escapeHtml(playlist.category)}</div>
                             <h4 class="playlist-title" style="margin-top: 12px;">${escapeHtml(playlist.title)}</h4>
                         </div>
-                        <div class="playlist-badge"><i class="fa-brands fa-spotify"></i> public</div>
+                        <div class="playlist-badge"><i class="fab fa-spotify"></i> public</div>
                     </div>
                     <p class="playlist-desc">${escapeHtml(playlist.description)}</p>
                     <div class="playlist-tags">
                         ${(playlist.browseCategories || []).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join('')}
                     </div>
                     <div class="playlist-actions">
-                        <span class="playlist-action primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> Select</span>
+                        <span class="playlist-action primary"><i class="fas fa-external-link-alt"></i> Select</span>
                         <a class="playlist-action" href="${escapeHtml(playlist.spotifyUrl)}" target="_blank" rel="noreferrer" onclick="event.stopPropagation();">
-                            <i class="fa-brands fa-spotify"></i> Spotify
+                            <i class="fab fa-spotify"></i> Spotify
                         </a>
                     </div>
                 </article>
@@ -1685,9 +1685,9 @@
             const copyButton = event.target.closest('[data-copy]');
             if (copyButton) {
                 copyToClipboard(copyButton.dataset.copy);
-                copyButton.innerHTML = '<i class="fa-solid fa-check"></i> Copied';
+                copyButton.innerHTML = '<i class="fas fa-check"></i> Copied';
                 setTimeout(() => {
-                    copyButton.innerHTML = '<i class="fa-solid fa-link"></i> Copy link';
+                    copyButton.innerHTML = '<i class="fas fa-link"></i> Copy link';
                 }, 1200);
                 return;
             }
