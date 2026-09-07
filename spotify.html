@@ -842,6 +842,7 @@
                         <!-- <h3 class="section-title">A glanceable overview</h3> -->
                     </div>
                 </div>
+                <div style="height: 12px;"></div>
                 <div class="hero-metrics" id="metrics"></div>
             </div>
         </section>
@@ -939,7 +940,7 @@
                 title: "Timon's Favorites",
                 description: 'Regularly updated playlist containing my most listened and favorite songs - the main playlist to discover what I currently listen to.',
                 mood: 'regularly updated',
-                browseCategories: ['mixed'],
+                browseCategories: ['mixed', 'Timons Pick'],
                 tags: ['favorites', 'main', 'updated'],
                 accent: 'rgba(141, 245, 169, 0.34)',
                 embedUrl: 'https://open.spotify.com/embed/playlist/4GKlnpUNlDL56UYMKjFQbl',
@@ -961,7 +962,7 @@
                 title: 'S̸͂͝U̶̍͝P̷̾E̵̚R̶̈́M̷̈́A̵͘S̴͌S̸̑I̶͋V̷́E̸͠',
                 description: 'Train Tracks sub-playlist, containing experimental and "straining" music.',
                 mood: 'experimental archive',
-                browseCategories: ['experimental'],
+                browseCategories: ['experimental', 'Timons Pick'],
                 tags: ['experimental', 'sub-playlist', 'edge'],
                 accent: 'rgba(255, 147, 117, 0.30)',
                 embedUrl: 'https://open.spotify.com/embed/playlist/6jVL8zjmBuoyhScwv3wb7g',
@@ -972,7 +973,7 @@
                 title: 'Human Music',
                 description: 'Train Tracks sub-playlist, containing all "normal" music.',
                 mood: 'balanced archive',
-                browseCategories: ['mixed', 'energetic'],
+                browseCategories: ['mixed', 'energetic', 'pop', 'rock', 'indie'],
                 tags: ['normal', 'sub-playlist', 'everyday'],
                 accent: 'rgba(187, 129, 255, 0.28)',
                 embedUrl: 'https://open.spotify.com/embed/playlist/5nJfnv6KUfvV3YS4eqQ2KJ',
@@ -994,7 +995,7 @@
                 title: "German stuff that's okay 🇩🇪",
                 description: 'German (and a little Swiss).',
                 mood: 'German / Swiss',
-                browseCategories: ['mixed', 'german'],
+                browseCategories: ['mixed', 'german', 'swiss'],
                 tags: ['german', 'swiss', 'language'],
                 accent: 'rgba(141, 245, 169, 0.26)',
                 embedUrl: 'https://open.spotify.com/embed/playlist/19YVEugheuLLZ24Jm5JoOt',
@@ -1005,7 +1006,7 @@
                 title: 'Hablo Espagnol 🇪🇸',
                 description: 'Spanish.',
                 mood: 'Spanish / language study',
-                browseCategories: ['mixed', 'spanish'],
+                browseCategories: ['mixed', 'spanish', 'happy'],
                 tags: ['spanish', 'language', 'latin'],
                 accent: 'rgba(109, 199, 255, 0.28)',
                 embedUrl: 'https://open.spotify.com/embed/playlist/0dzfnaj2pwkUFEbS74gVhm',
@@ -1016,7 +1017,7 @@
                 title: 'Voilà, écoutez moi 🇫🇷',
                 description: 'French.',
                 mood: 'French / language study',
-                browseCategories: ['pop', 'french'],
+                browseCategories: ['french', 'pop'],
                 tags: ['french', 'language', 'chanson'],
                 accent: 'rgba(255, 147, 117, 0.26)',
                 embedUrl: 'https://open.spotify.com/embed/playlist/7IVsXcb5MpS7pMtd6hiNt3',
@@ -1036,9 +1037,9 @@
             {   id: 'all-of-the-world',
                 category: 'Language Playlists',
                 title: 'All Of The World 🌎',
-                description: 'One song of each language on the world :).',
+                description: 'One song of each language on the world :)',
                 mood: 'global / sampler',
-                browseCategories: ['mixed'],
+                browseCategories: ['mixed', 'conceptual list'],
                 tags: ['world', 'languages', 'sampler'],
                 accent: 'rgba(255, 211, 110, 0.24)',
                 embedUrl: 'https://open.spotify.com/embed/playlist/43PYfOeEHGetxQU1Mx1Hb9',
@@ -1061,7 +1062,7 @@
                 description: 'Japanese.',
                 mood: 'Japanese / language study',
                 browseCategories: ['mixed', 'japanese'],
-                tags: ['japanese', 'language', 'travel'],
+                tags: ['japanese', 'language', 'travel', 'anime'],
                 accent: 'rgba(141, 245, 169, 0.22)',
                 embedUrl: 'https://open.spotify.com/embed/playlist/3pCoyKLrGpHLOs68KwySq7',
                 spotifyUrl: 'https://open.spotify.com/playlist/3pCoyKLrGpHLOs68KwySq7?si=2e5b24c8d9f945d6'
@@ -1082,7 +1083,7 @@
                 title: 'Wotsch es Zückerli?🇨🇭',
                 description: 'Swiss.',
                 mood: 'Swiss / dialect',
-                browseCategories: ['indie', 'swiss'],
+                browseCategories: ['swiss', 'indie'],
                 tags: ['swiss', 'dialect', 'language'],
                 accent: 'rgba(187, 129, 255, 0.24)',
                 embedUrl: 'https://open.spotify.com/embed/playlist/0aUnzLp9419nTA2vu8EQFQ',
@@ -1093,7 +1094,7 @@
                 title: 'Portuguese 🇵🇹',
                 description: 'Portuguese.',
                 mood: 'Portuguese / language study',
-                browseCategories: ['chill', 'portuguese'],
+                browseCategories: ['portuguese'],
                 tags: ['portuguese', 'language', 'iberia'],
                 accent: 'rgba(255, 211, 110, 0.22)',
                 embedUrl: 'https://open.spotify.com/embed/playlist/2mCPu0HoxlJRDd6VsNmQJg',
@@ -1104,7 +1105,7 @@
                 title: 'Paranoid Androids Are Talking',
                 description: 'Awesome music based on Radiohead and similar music.',
                 mood: 'Radiohead-adjacent / alt',
-                browseCategories: ['happy'],
+                browseCategories: ['happy', 'english', 'Timons Pick'],
                 tags: ['radiohead', 'alt', 'inspired'],
                 accent: 'rgba(109, 199, 255, 0.30)',
                 embedUrl: 'https://open.spotify.com/embed/playlist/3qJaz52hfZxQ75MK3Z0Dr8',
@@ -1115,7 +1116,7 @@
                 title: 'Falling Down a Deep Hole',
                 description: 'Sad playlist to cry or fall asleep to.',
                 mood: 'sad / sleep',
-                browseCategories: ['sad'],
+                browseCategories: ['sad', 'moody', 'Timons Pick'],
                 tags: ['sad', 'night', 'comfort'],
                 accent: 'rgba(255, 147, 117, 0.30)',
                 embedUrl: 'https://open.spotify.com/embed/playlist/5ijh9zHIWh7bmpT8vNAunj',
@@ -1126,7 +1127,7 @@
                 title: 'Headphone Test',
                 description: 'Songs to test your headphones or speakers with.',
                 mood: 'testing / reference',
-                browseCategories: ['soundtrack'],
+                browseCategories: ['soundtrack', 'conceptual list'],
                 tags: ['audio', 'test', 'reference'],
                 accent: 'rgba(141, 245, 169, 0.24)',
                 embedUrl: 'https://open.spotify.com/embed/playlist/2k7jQMfz8S4KO6YaqUrDGR',
@@ -1137,7 +1138,7 @@
                 title: 'Time',
                 description: 'Songs with unusual time signatures.',
                 mood: 'odd meter / prog',
-                browseCategories: ['pop', 'happy'],
+                browseCategories: ['conceptual list'],
                 tags: ['time signature', 'rhythm', 'mathy'],
                 accent: 'rgba(187, 129, 255, 0.24)',
                 embedUrl: 'https://open.spotify.com/embed/playlist/0cdk4JvfLm5G8Blu5I3Auw',
@@ -1148,7 +1149,7 @@
                 title: 'Contemporary Jazz',
                 description: 'Contemporary jazz.',
                 mood: 'jazz / modern',
-                browseCategories: ['jazz'],
+                browseCategories: ['jazz', 'Timons Pick'],
                 tags: ['jazz', 'modern', 'instrumental'],
                 accent: 'rgba(255, 211, 110, 0.24)',
                 embedUrl: 'https://open.spotify.com/embed/playlist/2s24GzhCmTN5vKKazPi13j',
@@ -1181,7 +1182,7 @@
                 title: 'Happy Sailing',
                 description: 'Our sailing playlist.',
                 mood: 'sailing / bright',
-                browseCategories: ['happy'],
+                browseCategories: ['happy', 'pop', 'indie'],
                 tags: ['sailing', 'travel', 'summer'],
                 accent: 'rgba(255, 147, 117, 0.24)',
                 embedUrl: 'https://open.spotify.com/embed/playlist/4ZNcMkvHBZ56MfC1gs7gxa',
@@ -1192,11 +1193,22 @@
                 title: "Runner's High",
                 description: 'My songs for going for a run.',
                 mood: 'run / propulsion',
-                browseCategories: ['energetic'],
+                browseCategories: ['energetic', 'techno'],
                 tags: ['running', 'cardio', 'pace'],
                 accent: 'rgba(187, 129, 255, 0.22)',
                 embedUrl: 'https://open.spotify.com/embed/playlist/12gCTOoPnhUwZfTR2EyjLB',
                 spotifyUrl: 'https://open.spotify.com/playlist/12gCTOoPnhUwZfTR2EyjLB?si=a48de21b4a2445e0'
+            },
+            {   id: 'hype-up',
+                category: 'Other Playlists',
+                title: "Hype Up",
+                description: 'Songs to get you pumped up.',
+                mood: 'hype / energetic',
+                browseCategories: ['energetic'],
+                tags: ['running', 'energy', 'pace'],
+                accent: 'rgba(187, 129, 255, 0.22)',
+                embedUrl: 'https://open.spotify.com/embed/playlist/7APfWDOb3J4fKU8GCO0znX',
+                spotifyUrl: 'https://open.spotify.com/playlist/7APfWDOb3J4fKU8GCO0znX?si=303cae7d4d2a424b'
             },
             {   id: 'your-blue-heart-is-colorful',
                 category: 'Other Playlists',
@@ -1214,7 +1226,7 @@
                 title: '#n0wh3r3',
                 description: 'Fucked distortion mental state.',
                 mood: 'chaotic / distorted',
-                browseCategories: ['experimental'],
+                browseCategories: ['experimental', 'moody'],
                 tags: ['distortion', 'chaos', 'noise'],
                 accent: 'rgba(255, 147, 117, 0.22)',
                 embedUrl: 'https://open.spotify.com/embed/playlist/0TGqEaed2ngkPHPYfD5UcZ',
@@ -1236,7 +1248,7 @@
                 title: 'A Romantic Little Tune',
                 description: 'Romantic "old" date music.',
                 mood: 'romantic / date night',
-                browseCategories: ['moody'],
+                browseCategories: ['moody', 'english'],
                 tags: ['romantic', 'date', 'oldies'],
                 accent: 'rgba(141, 245, 169, 0.20)',
                 embedUrl: 'https://open.spotify.com/embed/playlist/52pr2FjS9sLArAe2CcXS5B',
@@ -1258,7 +1270,7 @@
                 title: 'Raeggaeggae',
                 description: 'Reggae.',
                 mood: 'reggae / warm',
-                browseCategories: ['reggae', 'happy'],
+                browseCategories: ['happy'],
                 tags: ['reggae', 'sunny', 'groove'],
                 accent: 'rgba(255, 211, 110, 0.20)',
                 embedUrl: 'https://open.spotify.com/embed/playlist/6jtlRn4q0a51JjD4r5ZPXC',
@@ -1280,18 +1292,29 @@
                 title: 'guitar::collection',
                 description: 'Guitar-only songs.',
                 mood: 'guitar / focused',
-                browseCategories: ['acoustic'],
+                browseCategories: ['acoustic', 'instrumental'],
                 tags: ['guitar', 'instrumental', 'strings'],
                 accent: 'rgba(141, 245, 169, 0.18)',
                 embedUrl: 'https://open.spotify.com/embed/playlist/6GIdzCnOodeJ7Q1lZ2PG9E',
                 spotifyUrl: 'https://open.spotify.com/playlist/6GIdzCnOodeJ7Q1lZ2PG9E?si=d1313e0facd54aea'
+            },
+            {   id: 'pop-collection',
+                category: 'Other Playlists',
+                title: 'pop::collection',
+                description: 'Huge collection of pop songs.',
+                mood: 'pop / focused',
+                browseCategories: ['pop', 'happy'],
+                tags: ['pop', 'happy', 'catchy'],
+                accent: 'rgba(141, 245, 169, 0.18)',
+                embedUrl: 'https://open.spotify.com/embed/playlist/0OJSECRbPHHzxk2x2l0uqG',
+                spotifyUrl: 'https://open.spotify.com/playlist/0OJSECRbPHHzxk2x2l0uqG?si=ba11a55ca39c495a'
             },
             {   id: 'latin-beach-chillin-vibes',
                 category: 'Other Playlists',
                 title: 'Latin Beach Chillin\' Vibes 🌴',
                 description: 'Chill latin beach vibes :).',
                 mood: 'latin / beach',
-                browseCategories: ['happy', 'english', 'spanish'],
+                browseCategories: ['happy', 'english', 'spanish', 'portuguese'],
                 tags: ['latin', 'beach', 'chill'],
                 accent: 'rgba(255, 147, 117, 0.20)',
                 embedUrl: 'https://open.spotify.com/embed/playlist/260Q6tclwCTOYIndnkmi9e',
@@ -1313,11 +1336,22 @@
                 title: 'Wait what!?',
                 description: 'Songs that are actually covers, followed by originals.',
                 mood: 'covers / english',
-                browseCategories: ['mixed', 'english'],
+                browseCategories: ['mixed', 'english', 'conceptual list'],
                 tags: ['covers', 'english', 'originals'],
                 accent: 'rgba(109, 199, 255, 0.22)',
                 embedUrl: 'https://open.spotify.com/embed/playlist/65th6e3XySAE7MkaczxpCj',
                 spotifyUrl: 'https://open.spotify.com/playlist/65th6e3XySAE7MkaczxpCj?si=9d87e0963c274017'
+            },
+            {   id: 'story-time',
+                category: 'Other Playlists',
+                title: 'Story Time',
+                description: 'A collection of stories told through music.',
+                mood: 'narrative / storytelling',
+                browseCategories: ['mixed', 'english', 'german', 'conceptual list'],
+                tags: ['stories', 'narrative'],
+                accent: 'rgba(109, 199, 255, 0.22)',
+                embedUrl: 'https://open.spotify.com/embed/playlist/6ZM22SIQtAhz6rxUUIPVsD',
+                spotifyUrl: 'https://open.spotify.com/playlist/6ZM22SIQtAhz6rxUUIPVsD?si=18b1fd647f6e4ed5'
             },
             {   id: 'my-karaoke',
                 category: 'Other Playlists',
@@ -1367,12 +1401,23 @@
                 category: 'Other Playlists',
                 title: 'Fly me to the Moon River',
                 description: 'A fork of my friends "Put Your Head On My Shoulder" playlist.',
-                mood: 'moody / fork',
+                mood: 'moody / old',
                 browseCategories: ['moody'],
                 tags: ['moody', 'fork', 'friends'],
                 accent: 'rgba(109, 199, 255, 0.18)',
                 embedUrl: 'https://open.spotify.com/embed/playlist/69ly8MHU92ov8uZHgWl2xl',
                 spotifyUrl: 'https://open.spotify.com/playlist/69ly8MHU92ov8uZHgWl2xl?si=c991a7316a494a23'
+            },
+            {   id: 'and-im-feeling-good',
+                category: 'Other Playlists',
+                title: 'And I\'m Feeling Good',
+                description: 'Bill Withers, Nina Simone, and other similar classics',
+                mood: 'moody / old',
+                browseCategories: ['moody', 'happy', 'english'],
+                tags: ['moody', 'fork', 'friends'],
+                accent: 'rgba(109, 199, 255, 0.18)',
+                embedUrl: 'https://open.spotify.com/embed/playlist/7u6NYjbIMAobABlImvUVqa',
+                spotifyUrl: 'https://open.spotify.com/playlist/7u6NYjbIMAobABlImvUVqa?si=146d5b77096042b8'
             },
             {   id: 'black-flash-party',
                 category: 'Other Playlists',
@@ -1412,11 +1457,22 @@
                 title: 'Looking out the window',
                 description: 'Piano, violin, classical music, etc.',
                 mood: 'acoustic / classical',
-                browseCategories: ['acoustic', 'classical'],
+                browseCategories: ['acoustic', 'instrumental'],
                 tags: ['piano', 'violin', 'classical'],
                 accent: 'rgba(255, 147, 117, 0.18)',
                 embedUrl: 'https://open.spotify.com/embed/playlist/6vZvokyRJML1L6wwS8aEu2',
                 spotifyUrl: 'https://open.spotify.com/playlist/6vZvokyRJML1L6wwS8aEu2?si=e53bc46bc15249b7'
+            },
+            {   id: 'modern-piano',
+                category: 'Other Playlists',
+                title: 'Modern Piano',
+                description: 'Modern fully instrumental piano.',
+                mood: 'acoustic / piano',
+                browseCategories: ['acoustic', 'instrumental'],
+                tags: ['piano'],
+                accent: 'rgba(255, 147, 117, 0.18)',
+                embedUrl: 'https://open.spotify.com/embed/playlist/54oSTTv5ZTArXAkxGjU8Kt',
+                spotifyUrl: 'https://open.spotify.com/playlist/54oSTTv5ZTArXAkxGjU8Kt?si=c66a2d42882b4ab1'
             },
             {   id: 'psychedelic-techno',
                 category: 'Other Playlists',
@@ -1477,7 +1533,7 @@
                 (playlist.browseCategories || []).forEach((category) => categories.add(category));
             });
 
-            const fixedOrder = ['Main Playlists', 'Language Playlists', 'Other Playlists'];
+            const fixedOrder = ['Main Playlists', 'Timons Pick', 'Language Playlists', 'Other Playlists'];
             const ordered = [...categories]
                 .filter((category) => fixedOrder.includes(category))
                 .sort((a, b) => fixedOrder.indexOf(a) - fixedOrder.indexOf(b));
@@ -1493,7 +1549,7 @@
             const metrics = [
                 { value: String(playlists.length), label: 'public playlists to explore.' },
                 { value: String(categoryCount), label: 'categories to filter by at a glance.' },
-                { value: '1', label: 'click to spotlight and open the selected playlist.' }
+                // { value: '1', label: 'click to spotlight and open the selected playlist.' }
             ];
 
             metricsEl.innerHTML = metrics.map((metric) => `
@@ -1540,7 +1596,6 @@
             featuredMetaEl.innerHTML = `
                 <span class="pill">${escapeHtml(playlist.category)}</span>
                 <span class="pill">${escapeHtml(playlist.mood)}</span>
-                <span class="pill">Template playlist</span>
             `;
             featuredActionsEl.innerHTML = `
                 <a class="playlist-action primary" href="${escapeHtml(playlist.spotifyUrl)}" target="_blank" rel="noreferrer">
