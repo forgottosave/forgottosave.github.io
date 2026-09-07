@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Timon Ensel - Spotify Atlas</title>
+    <meta name="description" content="A modern interactive hub for public Spotify playlists, with categories, search, and embedded playback.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="fontawesome/css/all.min.css" rel="stylesheet" />
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <style>
+        :root {
+            --bg: #07111e;
+            --bg-2: #0d1b2a;
+            --panel: rgba(9, 16, 28, 0.78);
+            --panel-strong: rgba(10, 18, 34, 0.95);
+            --border: rgba(255, 255, 255, 0.12);
+            --text: #f4f7fb;
+            --muted: rgba(244, 247, 251, 0.72);
+            --accent: #8df5a9;
+            --accent-2: #6dc7ff;
+            --accent-3: #ffd36e;
+            --shadow: 0 30px 80px rgba(0, 0, 0, 0.42);
+            --mx: 50vw;
+            --my: 15vh;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            color: var(--text);
+            background:
+                radial-gradient(1000px circle at 10% 10%, rgba(109, 199, 255, 0.18), transparent 35%),
+                radial-gradient(800px circle at 90% 15%, rgba(141, 245, 169, 0.16), transparent 32%),
+                radial-gradient(800px circle at 75% 90%, rgba(255, 211, 110, 0.12), transparent 28%),
+                linear-gradient(145deg, var(--bg), var(--bg-2));
+            font-family: "Manrope", system-ui, sans-serif;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(600px circle at var(--mx) var(--my), rgba(141, 245, 169, 0.12), transparent 42%),
+                radial-gradient(400px circle at calc(var(--mx) + 120px) calc(var(--my) + 60px), rgba(109, 199, 255, 0.11), transparent 44%);
+            mix-blend-mode: screen;
+            opacity: 0.9;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+            background-size: 72px 72px;
+            mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.88), transparent 90%);
+            opacity: 0.18;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .page {
+            width: min(1400px, calc(100vw - 32px));
+            margin: 0 auto;
+            padding: 22px 0 34px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 18px 0 26px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-width: 0;
+        }
+
+        .brand-mark {
+            width: 52px;
+            height: 52px;
+            border-radius: 18px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(145deg, rgba(141, 245, 169, 0.95), rgba(109, 199, 255, 0.92));
+            color: #06111d;
+            box-shadow: 0 12px 30px rgba(109, 199, 255, 0.32);
+            font-size: 1.25rem;
+        }
+
+        .brand-copy h1 {
+            margin: 0;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(1.1rem, 2vw, 1.6rem);
+            letter-spacing: 0.02em;
+        }
+
+        .brand-copy p {
+            margin: 4px 0 0;
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .nav a {
+            padding: 11px 15px;
+            border: 1px solid transparent;
+            border-radius: 999px;
+            color: var(--muted);
+            background: rgba(255, 255, 255, 0.03);
+            transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease;
+            backdrop-filter: blur(16px);
+        }
+
+        .nav a:hover,
+        .nav a:focus-visible,
+        .nav a.active {
+            color: var(--text);
+            border-color: rgba(141, 245, 169, 0.38);
+            background: rgba(141, 245, 169, 0.08);
+            transform: translateY(-1px);
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(360px, 0.8fr);
+            gap: 24px;
+            align-items: stretch;
+            margin-top: 10px;
+        }
+
+        .hero-panel,
+        .glass-panel,
+        .playlist-card,
+        .spotlight-frame {
+            border: 1px solid var(--border);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(22px);
+        }
+
+        .hero-panel {
+            border-radius: 32px;
+            padding: clamp(24px, 4vw, 40px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-panel::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(900px circle at 20% 0%, rgba(109, 199, 255, 0.18), transparent 35%), radial-gradient(720px circle at 85% 25%, rgba(141, 245, 169, 0.16), transparent 32%);
+            pointer-events: none;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--muted);
+            background: rgba(255, 255, 255, 0.03);
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow i {
+            color: var(--accent);
+        }
+
+        .hero h2 {
+            margin: 18px 0 14px;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(2.6rem, 7vw, 5.9rem);
+            line-height: 0.95;
+            letter-spacing: -0.05em;
+            max-width: 11ch;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h2 .accent {
+            color: var(--accent);
+        }
+
+        .hero-copy {
+            max-width: 62ch;
+            color: var(--muted);
+            font-size: 1.02rem;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 26px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .button,
+        .chip,
+        .playlist-action {
+            border: 0;
+            outline: none;
+            cursor: pointer;
+            font: inherit;
+            transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, color 180ms ease, border-color 180ms ease;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 18px;
+            border-radius: 16px;
+            font-weight: 700;
+        }
+
+        .button-primary {
+            color: #06111d;
+            background: linear-gradient(135deg, var(--accent), #d2ffcf);
+            box-shadow: 0 18px 38px rgba(141, 245, 169, 0.24);
+        }
+
+        .button-secondary {
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .button:hover,
+        .button:focus-visible,
+        .chip:hover,
+        .chip:focus-visible,
+        .playlist-action:hover,
+        .playlist-action:focus-visible {
+            transform: translateY(-2px);
+        }
+
+        .hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 26px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .metric {
+            padding: 16px;
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.045);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .metric strong {
+            display: block;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(1.35rem, 3vw, 2rem);
+            margin-bottom: 6px;
+        }
+
+        .metric span {
+            color: var(--muted);
+            font-size: 0.92rem;
+            line-height: 1.5;
+        }
+
+        .side-panel {
+            display: grid;
+            gap: 16px;
+        }
+
+        .glass-panel {
+            border-radius: 28px;
+            padding: 22px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .focus-stack {
+            display: grid;
+            gap: 14px;
+        }
+
+        .mini-card {
+            padding: 16px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            justify-content: space-between;
+            gap: 14px;
+            align-items: center;
+        }
+
+        .mini-card strong {
+            display: block;
+            font-size: 0.98rem;
+            margin-bottom: 4px;
+        }
+
+        .mini-card span {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .pulse {
+            display: grid;
+            gap: 10px;
+            justify-items: end;
+            min-width: 110px;
+        }
+
+        .bars {
+            display: flex;
+            gap: 5px;
+            align-items: end;
+            height: 44px;
+        }
+
+        .bars span {
+            width: 8px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, var(--accent), var(--accent-2));
+            animation: pulse 1.6s ease-in-out infinite;
+            transform-origin: bottom;
+        }
+
+        .bars span:nth-child(2) { animation-delay: 120ms; height: 26px; }
+        .bars span:nth-child(1) { animation-delay: 0ms; height: 16px; }
+        .bars span:nth-child(3) { animation-delay: 240ms; height: 34px; }
+        .bars span:nth-child(4) { animation-delay: 360ms; height: 22px; }
+        .bars span:nth-child(5) { animation-delay: 480ms; height: 40px; }
+
+        @keyframes pulse {
+            0%, 100% { transform: scaleY(0.75); opacity: 0.6; }
+            50% { transform: scaleY(1.1); opacity: 1; }
+        }
+
+        .spotlight {
+            margin-top: 26px;
+            display: grid;
+            grid-template-columns: minmax(0, 1.08fr) minmax(330px, 0.92fr);
+            gap: 22px;
+            align-items: stretch;
+        }
+
+        .spotlight-frame {
+            border-radius: 30px;
+            overflow: hidden;
+            min-height: 520px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .spotlight-header {
+            padding: 24px 24px 0;
+        }
+
+        .spotlight-header .label,
+        .section-header .label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--muted);
+            font-size: 0.88rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+        }
+
+        .spotlight-title {
+            margin: 12px 0 10px;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(1.8rem, 3vw, 2.7rem);
+            letter-spacing: -0.04em;
+        }
+
+        .spotlight-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .pill {
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--muted);
+            font-size: 0.86rem;
+        }
+
+        .spotlight-copy {
+            color: var(--muted);
+            line-height: 1.75;
+            margin: 0 0 18px;
+            max-width: 62ch;
+        }
+
+        .spotlight-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .iframe-wrap {
+            margin-top: auto;
+            padding: 0 16px 16px 16px;
+        }
+
+        .iframe-shell {
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .iframe-shell iframe {
+            width: 100%;
+            height: 352px;
+            border: 0;
+            display: block;
+        }
+
+        .detail-panel {
+            display: grid;
+            gap: 16px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .section-title {
+            margin: 10px 0 0;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+            letter-spacing: -0.03em;
+        }
+
+        .section-note {
+            color: var(--muted);
+            max-width: 60ch;
+            line-height: 1.7;
+            margin: 8px 0 0;
+        }
+
+        .glass-panel .controls {
+            display: grid;
+            gap: 14px;
+            margin-top: 18px;
+        }
+
+        .searchbar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0 18px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            background: rgba(255, 255, 255, 0.04);
+            min-height: 56px;
+        }
+
+        .searchbar i {
+            color: var(--muted);
+        }
+
+        .searchbar input {
+            width: 100%;
+            min-width: 0;
+            border: 0;
+            outline: none;
+            background: transparent;
+            color: var(--text);
+            font: inherit;
+        }
+
+        .searchbar input::placeholder {
+            color: rgba(244, 247, 251, 0.44);
+        }
+
+        .chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 11px 14px;
+            border-radius: 999px;
+            color: var(--muted);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .chip .count {
+            display: inline-grid;
+            place-items: center;
+            min-width: 24px;
+            height: 24px;
+            padding: 0 7px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text);
+            font-size: 0.8rem;
+        }
+
+        .chip.active {
+            color: #06111d;
+            background: linear-gradient(135deg, var(--accent), #d3ffd4);
+            border-color: transparent;
+            box-shadow: 0 14px 30px rgba(141, 245, 169, 0.2);
+        }
+
+        .playlist-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 18px;
+        }
+
+        .playlist-card {
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            gap: 14px;
+            width: 100%;
+            text-align: left;
+            border-radius: 26px;
+            padding: 18px;
+            color: inherit;
+            min-height: 260px;
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .playlist-card::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            background: radial-gradient(420px circle at var(--card-x, 50%) var(--card-y, 50%), var(--card-glow, rgba(109, 199, 255, 0.24)), transparent 52%);
+            opacity: 0.85;
+            z-index: -2;
+        }
+
+        .playlist-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+            z-index: -1;
+        }
+
+        .playlist-card.active {
+            border-color: rgba(141, 245, 169, 0.32);
+            box-shadow: 0 24px 48px rgba(141, 245, 169, 0.11), var(--shadow);
+        }
+
+        .playlist-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 14px;
+            align-items: start;
+        }
+
+        .playlist-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 11px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--muted);
+            font-size: 0.82rem;
+            white-space: nowrap;
+        }
+
+        .playlist-title {
+            margin: 0;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 1.32rem;
+            letter-spacing: -0.03em;
+        }
+
+        .playlist-desc {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .playlist-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            padding: 7px 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.05);
+            color: rgba(244, 247, 251, 0.78);
+            font-size: 0.82rem;
+        }
+
+        .playlist-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .playlist-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 11px 14px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .playlist-action.primary {
+            color: #06111d;
+            background: linear-gradient(135deg, var(--accent), #d3ffd4);
+            border-color: transparent;
+        }
+
+        .empty-state {
+            display: none;
+            padding: 30px 22px;
+            border-radius: 24px;
+            border: 1px dashed rgba(255, 255, 255, 0.18);
+            color: var(--muted);
+            text-align: center;
+            line-height: 1.7;
+            margin-top: 18px;
+        }
+
+        .footer-note {
+            margin-top: 24px;
+            color: var(--muted);
+            font-size: 0.94rem;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 1080px) {
+            .hero,
+            .spotlight {
+                grid-template-columns: 1fr;
+            }
+
+            .playlist-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .page {
+                width: min(100vw - 20px, 1400px);
+                padding-top: 12px;
+            }
+
+            .topbar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .nav {
+                justify-content: flex-start;
+            }
+
+            .hero-metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .spotlight-frame {
+                min-height: auto;
+            }
+
+            .iframe-shell iframe {
+                height: 392px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="page">
+        <header class="topbar">
+            <a class="brand" href="index">
+                <div class="brand-mark"><i class="fa-solid fa-wave-square"></i></div>
+                <div class="brand-copy">
+                    <h1>Timon Ensel</h1>
+                    <p>Spotify playlist atlas</p>
+                </div>
+            </a>
+            <nav class="nav" aria-label="Main navigation">
+                <a href="index">Home</a>
+                <a href="my-cv">My CV</a>
+                <a href="projects">Projects</a>
+                <a href="contact">Contact</a>
+                <a class="active" href="spotify">Spotify</a>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <div class="hero-panel">
+                <div class="eyebrow"><i class="fa-solid fa-circle-play"></i> curated public playlists, organized like a product</div>
+                <h2>Find the right <span class="accent">playlist</span> faster.</h2>
+                <p class="hero-copy">
+                    This page is a living dashboard for public Spotify playlists. Use it to surface the most important sets,
+                    split them into meaningful categories, and jump straight into playback with one click. The templates are
+                    intentionally generic so you can swap in your own playlist names, descriptions, and links later.
+                </p>
+                <div class="hero-actions">
+                    <a class="button button-primary" href="#library"><i class="fa-solid fa-compass"></i> Explore library</a>
+                    <a class="button button-secondary" href="#spotlight"><i class="fa-brands fa-spotify"></i> Jump to player</a>
+                </div>
+                <div class="hero-metrics" id="metrics"></div>
+            </div>
+
+            <div class="side-panel">
+                <div class="glass-panel">
+                    <div class="section-header">
+                        <div>
+                            <div class="label"><i class="fa-solid fa-bolt"></i> live dashboard</div>
+                            <h3 class="section-title">At a glance</h3>
+                        </div>
+                    </div>
+                    <div class="focus-stack" style="margin-top: 18px;">
+                        <div class="mini-card">
+                            <div>
+                                <strong>Featured lane</strong>
+                                <span>one playlist spotlight at a time</span>
+                            </div>
+                            <div class="pulse">
+                                <span>Selected</span>
+                                <div class="bars" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+                            </div>
+                        </div>
+                        <div class="mini-card">
+                            <div>
+                                <strong>Category filters</strong>
+                                <span>focus, motion, discovery, and more</span>
+                            </div>
+                            <div class="pulse">
+                                <span>Dynamic</span>
+                                <div class="bars" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+                            </div>
+                        </div>
+                        <div class="mini-card">
+                            <div>
+                                <strong>Mouse-reactive UI</strong>
+                                <span>glow follows the pointer around the page</span>
+                            </div>
+                            <div class="pulse">
+                                <span>Interactive</span>
+                                <div class="bars" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="spotlight" id="spotlight">
+            <div class="spotlight-frame">
+                <div class="spotlight-header">
+                    <div class="label"><i class="fa-brands fa-spotify"></i> featured playlist</div>
+                    <h3 class="spotlight-title" id="featuredTitle">Loading playlist...</h3>
+                    <div class="spotlight-meta" id="featuredMeta"></div>
+                    <p class="spotlight-copy" id="featuredDescription"></p>
+                    <div class="spotlight-actions" id="featuredActions"></div>
+                </div>
+                <div class="iframe-wrap">
+                    <div class="iframe-shell">
+                        <iframe id="featuredEmbed" title="Spotify playlist embed" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="glass-panel detail-panel">
+                <div>
+                    <div class="label"><i class="fa-solid fa-layer-group"></i> structure</div>
+                    <h3 class="section-title">How to use this page</h3>
+                    <p class="section-note">
+                        Keep your most important playlists near the top, let the categories do the sorting, and use the search box
+                        when the library grows. Each card is designed to become a direct Spotify jump target.
+                    </p>
+                </div>
+                <div>
+                    <div class="label"><i class="fa-solid fa-wand-magic-sparkles"></i> placeholders</div>
+                    <p class="section-note">
+                        The names and descriptions below are template copy. Replace them with your own public playlists, then update
+                        the embedded URLs to match your actual Spotify links.
+                    </p>
+                </div>
+                <div>
+                    <div class="label"><i class="fa-solid fa-arrow-up-right-from-square"></i> actions</div>
+                    <p class="section-note">
+                        Clicking a card updates the spotlight. The primary button opens Spotify in a new tab, while the secondary one
+                        copies the playlist URL.
+                    </p>
+                </div>
+            </aside>
+        </section>
+
+        <section class="glass-panel" id="library" style="margin-top: 22px;">
+            <div class="section-header">
+                <div>
+                    <div class="label"><i class="fa-solid fa-magnifying-glass"></i> playlist library</div>
+                    <h3 class="section-title">Browse by category, mood, or title</h3>
+                    <p class="section-note">Use the filters to focus the page on a single lane, or search across all playlists at once.</p>
+                </div>
+                <div class="label" id="resultCount" aria-live="polite"></div>
+            </div>
+
+            <div class="controls">
+                <label class="searchbar" for="playlistSearch">
+                    <i class="fa-solid fa-search"></i>
+                    <input id="playlistSearch" type="search" placeholder="Search playlists, moods, and tags..." autocomplete="off">
+                </label>
+
+                <div class="chip-row" id="categoryFilters"></div>
+            </div>
+
+            <div class="playlist-grid" id="playlistGrid"></div>
+            <div class="empty-state" id="emptyState">
+                No playlists match this combination yet. Try another category or search term, or swap in a new template entry.
+            </div>
+        </section>
+
+        <p class="footer-note">
+            Suggested next step: replace the template items with your own public playlists, then keep the featured section reserved
+            for the three or four playlists you want people to discover first.
+        </p>
+    </main>
+
+    <script>
+        const playlists = [
+            {
+                id: 'night-drive-protocol',
+                category: 'Motion',
+                title: 'Night Drive Protocol',
+                description: 'A sleek, low-light queue for late rides, city noise, and songs that feel like reflected streetlights.',
+                mood: 'midnight / momentum',
+                tags: ['driving', 'neon', 'tempo'],
+                accent: 'rgba(109, 199, 255, 0.34)',
+                embedUrl: 'https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M',
+                spotifyUrl: 'https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M'
+            },
+            {
+                id: 'focus-grid',
+                category: 'Focus',
+                title: 'Focus Grid',
+                description: 'Instrumental layers, light rhythm, and just enough motion to keep the workday from flattening out.',
+                mood: 'deep work / clean edge',
+                tags: ['work', 'instrumental', 'clarity'],
+                accent: 'rgba(141, 245, 169, 0.34)',
+                embedUrl: 'https://open.spotify.com/embed/playlist/37i9dQZF1DX5Vy6DFOcx00',
+                spotifyUrl: 'https://open.spotify.com/playlist/37i9dQZF1DX5Vy6DFOcx00'
+            },
+            {
+                id: 'sunroom-indie',
+                category: 'Discovery',
+                title: 'Sunroom Indie',
+                description: 'Warm, bright, and a little nostalgic. Meant for songs you want to keep on repeat without getting stale.',
+                mood: 'daylight / discovery',
+                tags: ['indie', 'fresh finds', 'repeatable'],
+                accent: 'rgba(255, 211, 110, 0.30)',
+                embedUrl: 'https://open.spotify.com/embed/playlist/37i9dQZF1DX4WYpdgoIcn6',
+                spotifyUrl: 'https://open.spotify.com/playlist/37i9dQZF1DX4WYpdgoIcn6'
+            },
+            {
+                id: 'afterhours-jazz',
+                category: 'Late Night',
+                title: 'Afterhours Jazz',
+                description: 'Soft cymbals, upright bass, and a room-tone atmosphere for the hour when the screen finally goes dim.',
+                mood: 'after dark / calm',
+                tags: ['jazz', 'slow burn', 'late'],
+                accent: 'rgba(255, 147, 117, 0.28)',
+                embedUrl: 'https://open.spotify.com/embed/playlist/37i9dQZF1DX0SM0LYsmbMT',
+                spotifyUrl: 'https://open.spotify.com/playlist/37i9dQZF1DX0SM0LYsmbMT'
+            },
+            {
+                id: 'social-charge',
+                category: 'Social',
+                title: 'Social Charge',
+                description: 'High-energy tracks that work for rooms, group chats, and anything that needs an immediate lift.',
+                mood: 'party / bright',
+                tags: ['party', 'singalong', 'crowd'],
+                accent: 'rgba(187, 129, 255, 0.28)',
+                embedUrl: 'https://open.spotify.com/embed/playlist/37i9dQZF1DXdPec7aLTmlC',
+                spotifyUrl: 'https://open.spotify.com/playlist/37i9dQZF1DXdPec7aLTmlC'
+            },
+            {
+                id: 'reset-sunday',
+                category: 'Seasonal',
+                title: 'Reset Sunday',
+                description: 'The playlist equivalent of cleaning your desk, making tea, and lining up the week before it starts.',
+                mood: 'weekend / soft landing',
+                tags: ['reset', 'Sunday', 'soft'],
+                accent: 'rgba(109, 199, 255, 0.22)',
+                embedUrl: 'https://open.spotify.com/embed/playlist/37i9dQZF1DWUvZBXGjNCU4',
+                spotifyUrl: 'https://open.spotify.com/playlist/37i9dQZF1DWUvZBXGjNCU4'
+            },
+            {
+                id: 'campus-core',
+                category: 'Essential',
+                title: 'Campus Core',
+                description: 'The main shelf: the playlists you always want visible because they define your taste in one glance.',
+                mood: 'must-have / anchor',
+                tags: ['signature', 'top tier', 'main'],
+                accent: 'rgba(141, 245, 169, 0.28)',
+                embedUrl: 'https://open.spotify.com/embed/playlist/37i9dQZF1DX0XUsuxWHRQd',
+                spotifyUrl: 'https://open.spotify.com/playlist/37i9dQZF1DX0XUsuxWHRQd'
+            },
+            {
+                id: 'architectural-noise',
+                category: 'Deep Dive',
+                title: 'Architectural Noise',
+                description: 'Experimental, textural, and slightly off-center. Best used as a signal that the archive has personality.',
+                mood: 'textural / artsy',
+                tags: ['ambient', 'design', 'curious'],
+                accent: 'rgba(255, 211, 110, 0.22)',
+                embedUrl: 'https://open.spotify.com/embed/playlist/37i9dQZF1DX7YcVT8rY0bV',
+                spotifyUrl: 'https://open.spotify.com/playlist/37i9dQZF1DX7YcVT8rY0bV'
+            },
+            {
+                id: 'soft-launch',
+                category: 'Discovery',
+                title: 'Soft Launch',
+                description: 'A quieter, slower playlist for introducing new favorites without forcing the tempo too hard.',
+                mood: 'fresh / low friction',
+                tags: ['new', 'gentle', 'trial'],
+                accent: 'rgba(255, 147, 117, 0.22)',
+                embedUrl: 'https://open.spotify.com/embed/playlist/37i9dQZF1DX4sWSpwq3LiO',
+                spotifyUrl: 'https://open.spotify.com/playlist/37i9dQZF1DX4sWSpwq3LiO'
+            }
+        ];
+
+        const state = {
+            filter: 'all',
+            search: '',
+            selectedId: playlists[0].id
+        };
+
+        const metrics = [
+            { value: '8', label: 'template playlists ready to swap for your own.' },
+            { value: '6', label: 'moods and categories for fast navigation.' },
+            { value: '1', label: 'click to spotlight and open the selected playlist.' }
+        ];
+
+        const metricsEl = document.getElementById('metrics');
+        const categoryFiltersEl = document.getElementById('categoryFilters');
+        const playlistGridEl = document.getElementById('playlistGrid');
+        const emptyStateEl = document.getElementById('emptyState');
+        const resultCountEl = document.getElementById('resultCount');
+        const playlistSearchEl = document.getElementById('playlistSearch');
+        const featuredTitleEl = document.getElementById('featuredTitle');
+        const featuredMetaEl = document.getElementById('featuredMeta');
+        const featuredDescriptionEl = document.getElementById('featuredDescription');
+        const featuredActionsEl = document.getElementById('featuredActions');
+        const featuredEmbedEl = document.getElementById('featuredEmbed');
+        const root = document.documentElement;
+
+        function escapeHtml(value) {
+            return value
+                .replaceAll('&', '&amp;')
+                .replaceAll('<', '&lt;')
+                .replaceAll('>', '&gt;')
+                .replaceAll('"', '&quot;')
+                .replaceAll("'", '&#39;');
+        }
+
+        function uniqueCategories() {
+            return ['all', ...new Set(playlists.map((playlist) => playlist.category))];
+        }
+
+        function renderMetrics() {
+            metricsEl.innerHTML = metrics.map((metric) => `
+                <div class="metric">
+                    <strong>${metric.value}</strong>
+                    <span>${escapeHtml(metric.label)}</span>
+                </div>
+            `).join('');
+        }
+
+        function renderFilters() {
+            categoryFiltersEl.innerHTML = uniqueCategories().map((category) => {
+                const count = category === 'all'
+                    ? playlists.length
+                    : playlists.filter((playlist) => playlist.category === category).length;
+                const active = state.filter === category ? 'active' : '';
+                const label = category === 'all' ? 'All playlists' : category;
+                return `
+                    <button class="chip ${active}" type="button" data-filter="${escapeHtml(category)}">
+                        <span>${escapeHtml(label)}</span>
+                        <span class="count">${count}</span>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function matchesPlaylist(playlist) {
+            const search = state.search.trim().toLowerCase();
+            const categoryMatch = state.filter === 'all' || playlist.category === state.filter;
+            const text = [playlist.title, playlist.description, playlist.category, playlist.mood, ...playlist.tags].join(' ').toLowerCase();
+            const searchMatch = !search || text.includes(search);
+            return categoryMatch && searchMatch;
+        }
+
+        function getVisiblePlaylists() {
+            return playlists.filter(matchesPlaylist);
+        }
+
+        function setFeaturedPlaylist(playlist) {
+            state.selectedId = playlist.id;
+            root.style.setProperty('--accent-2', playlist.accent);
+            featuredTitleEl.textContent = playlist.title;
+            featuredDescriptionEl.textContent = playlist.description;
+            featuredMetaEl.innerHTML = `
+                <span class="pill">${escapeHtml(playlist.category)}</span>
+                <span class="pill">${escapeHtml(playlist.mood)}</span>
+                <span class="pill">Template playlist</span>
+            `;
+            featuredActionsEl.innerHTML = `
+                <a class="playlist-action primary" href="${escapeHtml(playlist.spotifyUrl)}" target="_blank" rel="noreferrer">
+                    <i class="fa-brands fa-spotify"></i> Open in Spotify
+                </a>
+                <button class="playlist-action" type="button" data-copy="${escapeHtml(playlist.spotifyUrl)}">
+                    <i class="fa-solid fa-link"></i> Copy link
+                </button>
+            `;
+            featuredEmbedEl.src = playlist.embedUrl;
+            syncActiveCard();
+        }
+
+        function syncActiveCard() {
+            document.querySelectorAll('.playlist-card').forEach((card) => {
+                card.classList.toggle('active', card.dataset.id === state.selectedId);
+            });
+        }
+
+        function renderPlaylists() {
+            const visible = getVisiblePlaylists();
+            resultCountEl.textContent = `${visible.length} playlist${visible.length === 1 ? '' : 's'} shown`;
+            emptyStateEl.style.display = visible.length ? 'none' : 'block';
+
+            playlistGridEl.innerHTML = visible.map((playlist) => `
+                <article class="playlist-card ${playlist.id === state.selectedId ? 'active' : ''}" data-id="${escapeHtml(playlist.id)}" tabindex="0" role="button" aria-label="Open ${escapeHtml(playlist.title)}">
+                    <div class="playlist-top">
+                        <div>
+                            <div class="playlist-badge"><i class="fa-solid fa-music"></i> ${escapeHtml(playlist.category)}</div>
+                            <h4 class="playlist-title" style="margin-top: 12px;">${escapeHtml(playlist.title)}</h4>
+                        </div>
+                        <div class="playlist-badge"><i class="fa-brands fa-spotify"></i> public</div>
+                    </div>
+                    <p class="playlist-desc">${escapeHtml(playlist.description)}</p>
+                    <div class="playlist-tags">
+                        ${playlist.tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join('')}
+                    </div>
+                    <div class="playlist-actions">
+                        <span class="playlist-action primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> Select</span>
+                        <a class="playlist-action" href="${escapeHtml(playlist.spotifyUrl)}" target="_blank" rel="noreferrer" onclick="event.stopPropagation();">
+                            <i class="fa-brands fa-spotify"></i> Spotify
+                        </a>
+                    </div>
+                </article>
+            `).join('');
+
+            syncActiveCard();
+        }
+
+        function filterAndRender() {
+            renderFilters();
+            renderPlaylists();
+            const visible = getVisiblePlaylists();
+            const selectedVisible = visible.find((playlist) => playlist.id === state.selectedId);
+            if (selectedVisible) {
+                setFeaturedPlaylist(selectedVisible);
+            } else if (visible.length) {
+                setFeaturedPlaylist(visible[0]);
+            }
+        }
+
+        function copyToClipboard(value) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(value);
+                return;
+            }
+
+            const textarea = document.createElement('textarea');
+            textarea.value = value;
+            textarea.setAttribute('readonly', 'true');
+            textarea.style.position = 'fixed';
+            textarea.style.left = '-9999px';
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+        }
+
+        document.addEventListener('click', (event) => {
+            const filterButton = event.target.closest('[data-filter]');
+            if (filterButton) {
+                state.filter = filterButton.dataset.filter;
+                filterAndRender();
+                return;
+            }
+
+            const copyButton = event.target.closest('[data-copy]');
+            if (copyButton) {
+                copyToClipboard(copyButton.dataset.copy);
+                copyButton.innerHTML = '<i class="fa-solid fa-check"></i> Copied';
+                setTimeout(() => {
+                    copyButton.innerHTML = '<i class="fa-solid fa-link"></i> Copy link';
+                }, 1200);
+                return;
+            }
+
+            const card = event.target.closest('.playlist-card');
+            if (card) {
+                const playlist = playlists.find((item) => item.id === card.dataset.id);
+                if (playlist) {
+                    setFeaturedPlaylist(playlist);
+                    card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+                }
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            const card = event.target.closest('.playlist-card');
+            if (!card) {
+                return;
+            }
+
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                const playlist = playlists.find((item) => item.id === card.dataset.id);
+                if (playlist) {
+                    setFeaturedPlaylist(playlist);
+                }
+            }
+        });
+
+        playlistSearchEl.addEventListener('input', (event) => {
+            state.search = event.target.value;
+            filterAndRender();
+        });
+
+        document.addEventListener('pointermove', (event) => {
+            root.style.setProperty('--mx', `${event.clientX}px`);
+            root.style.setProperty('--my', `${event.clientY}px`);
+
+            const card = event.target.closest('.playlist-card');
+            if (card) {
+                const rect = card.getBoundingClientRect();
+                const x = ((event.clientX - rect.left) / rect.width) * 100;
+                const y = ((event.clientY - rect.top) / rect.height) * 100;
+                card.style.setProperty('--card-x', `${x}%`);
+                card.style.setProperty('--card-y', `${y}%`);
+            }
+        });
+
+        renderMetrics();
+        filterAndRender();
+    </script>
+</body>
+</html>
