@@ -1333,7 +1333,16 @@
                 categories.add(playlist.category);
                 (playlist.browseCategories || []).forEach((category) => categories.add(category));
             });
-            return ['all', ...categories];
+
+            const fixedOrder = ['Main Playlists', 'Language Playlists', 'Other Playlists'];
+            const ordered = [...categories]
+                .filter((category) => fixedOrder.includes(category))
+                .sort((a, b) => fixedOrder.indexOf(a) - fixedOrder.indexOf(b));
+            const remaining = [...categories]
+                .filter((category) => !fixedOrder.includes(category))
+                .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
+
+            return ['all', ...ordered, ...remaining];
         }
 
         function renderMetrics() {
