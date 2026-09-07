@@ -1515,6 +1515,7 @@
         const featuredDescriptionEl = document.getElementById('featuredDescription');
         const featuredActionsEl = document.getElementById('featuredActions');
         const featuredEmbedEl = document.getElementById('featuredEmbed');
+        const spotlightEl = document.getElementById('spotlight');
         const root = document.documentElement;
 
         function escapeHtml(value) {
@@ -1609,6 +1610,10 @@
             syncActiveCard();
         }
 
+        function scrollToPlayer() {
+            spotlightEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
         function syncActiveCard() {
             document.querySelectorAll('.playlist-card').forEach((card) => {
                 card.classList.toggle('active', card.dataset.id === state.selectedId);
@@ -1697,7 +1702,7 @@
                 const playlist = playlists.find((item) => item.id === card.dataset.id);
                 if (playlist) {
                     setFeaturedPlaylist(playlist);
-                    card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+                    scrollToPlayer();
                 }
             }
         });
@@ -1713,6 +1718,7 @@
                 const playlist = playlists.find((item) => item.id === card.dataset.id);
                 if (playlist) {
                     setFeaturedPlaylist(playlist);
+                    scrollToPlayer();
                 }
             }
         });
