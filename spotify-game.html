@@ -145,7 +145,7 @@ h2{margin:18px 0 12px;font-family:"Space Grotesk",sans-serif;font-size:clamp(2.7
         </div>
     </section>
 
-    <p class="small-note">Spotify embeds may require a moment to load and can be unavailable depending on browser/privacy settings. The Spotify button on each card still works as a fallback.</p>
+    <p class="small-note">This page was of course also completely vibe-coded, except for the questions :P</p>
     </main>
 
     <script>
@@ -163,25 +163,25 @@ h2{margin:18px 0 12px;font-family:"Space Grotesk",sans-serif;font-size:clamp(2.7
                 'Hania Rani',
                 'Ex:Re',
                 'Rage Against The Machine',
+                'Twenty One Pilots',
                 'Nine Inch Nails',
-                'Shakira',
-                'Grandson',
-                'Fred Again..',
-                'Pomme',
                 'Faithless',
+                'Grandson',
                 'Stromae',
                 'Alt-J',
                 'Faber',
+                'Shakira',
                 'Gorillaz',
                 'Amy Winehouse',
+                'Fred Again..',
                 'Peter Fox',
                 'Nirvana',
                 'The Strokes',
                 'Käpt\'n Peng',
                 'System Of A Down',
+                'Pomme',
                 'Michael Kiwanuka',
                 'World\'s End Girlfriend',
-                'Twenty One Pilots',
                 'Laufey',
                 'Missio',
                 'Aurora',
@@ -254,6 +254,13 @@ h2{margin:18px 0 12px;font-family:"Space Grotesk",sans-serif;font-size:clamp(2.7
     const scoreEl = document.getElementById('score');
     const scoreLabel = document.getElementById('scoreLabel');
     const root = document.documentElement;
+    const panels = [...document.querySelectorAll('.panel')];
+
+    function setQuizMode(active) {
+        panels.forEach(panel => {
+            panel.style.display = active && panel.id !== 'quizPanel' ? 'none' : '';
+        });
+    }
 
     function escapeHtml(value) {
         return value.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;')
@@ -343,6 +350,7 @@ h2{margin:18px 0 12px;font-family:"Space Grotesk",sans-serif;font-size:clamp(2.7
         questions = makeQuestions();
         current = 0;
         score = 0;
+        setQuizMode(true);
         resultArea.style.display = 'none';
         questionArea.style.display = 'block';
         startButton.style.display = 'none';
@@ -350,6 +358,7 @@ h2{margin:18px 0 12px;font-family:"Space Grotesk",sans-serif;font-size:clamp(2.7
     }
 
     function showResult() {
+        setQuizMode(false);
         questionArea.style.display = 'none';
         resultArea.style.display = 'block';
         progressText.textContent = `${TOTAL_QUESTIONS} / ${TOTAL_QUESTIONS}`;
